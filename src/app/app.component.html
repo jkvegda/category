@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search to type"/>
+  <ul>
+    <li *ngFor="let maincat of result">
+      {{maincat.name}}
+        <ul>
+          <li *ngFor="let subcat of maincat.children">
+            {{subcat.childName}}
+            <ul>
+              <li *ngFor="let leafcat of subcat.children | searchfilter: queryString" [ngClass]="{'red' : queryString}">
+                {{leafcat.childName}}
+              </li>
+            </ul>
+          </li>
+        </ul>
+    </li>
+  </ul>
+</div>
+
+
